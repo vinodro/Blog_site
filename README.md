@@ -1,4 +1,4 @@
-# Getting Started Langinng Page
+# Getting Started Landinng Page
 
 Here the Product which all are available in store will appear on the UI.
 
