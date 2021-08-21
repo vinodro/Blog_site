@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducer from './component/reducer'
+import Home from './component/home'
+import CheckedOut from './component/SuccessMsg'
+import BookedItems from './component/Bookeditem';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
+import StateUpdate from './component/Stateupdate';
+
+let initialstate=[]
+
+const store = createStore(reducer,initialstate)
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route exact path='/BookedItems' component={BookedItems}/>
+            <Route exact path='/checkedout' component={CheckedOut}/>
+            <Route path='/' component={Home}/>
+          </Switch>
+        </Router>
+        <StateUpdate/>
+      </Provider>
+
     </div>
   );
 }
